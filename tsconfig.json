@@ -7,6 +7,10 @@
     "lib": ["ESNext"],
     "types": [],
     "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
-  }
+    "jsxImportSource": "hono/jsx",
+    "paths": {
+      "@*": ["./app/*"]
+    }
+  },
+  "include": ["app/**/*.ts", "app/**/*.tsx"],
 }

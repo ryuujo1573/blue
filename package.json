@@ -20,6 +20,7 @@
     "@hono/vite-cloudflare-pages": "^0.2.5",
     "@kubernetes/client-node": "^0.20.0",
     "@swc/core": "^1.4.0",
+    "@types/bun": "latest",
     "autoprefixer": "^10.4.17",
     "eslint": "^8.56.0",
     "postcss": "^8.4.35",
