@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  devcontainer:
+    build:
+      context: .
+    volumes:
+      - ..:${workspaceFolder}:cached
+    network_mode: service:mongo
+    command: sleep infinity
+
+  mongo:
+    image: mongo:7.0.5-jammy
+    restart: unless-stopped
+    volumes:
+      - mongo:/opt/mongodb/data
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: development
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: root
+      ME_CONFIG_BASICAUTH_PASSWORD: example
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: development
+      ME_CONFIG_MONGODB_URL: mongodb://root:development@mongo:27017/
+volumes:
+  mongo:
